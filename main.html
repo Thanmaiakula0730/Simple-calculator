@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Modern Colorful Calculator</title>
+    <style>
+      body {
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .calculator {
+        background-color: #ffffffdd;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        max-width: 320px;
+        width: 100%;
+      }
+
+      h1 {
+        text-align: center;
+        color: #2d3436;
+        margin-bottom: 15px;
+      }
+
+      #display {
+        width: 100%;
+        font-size: 28px;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 10px;
+        text-align: right;
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+      }
+
+      button {
+        padding: 15px;
+        font-size: 20px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.2s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      button:hover {
+        transform: scale(1.05);
+      }
+
+      /* Colorful buttons */
+      .btn-digit {
+        background-color: #dff9fb;
+        color: #2d3436;
+      }
+
+      .btn-operator {
+        background-color: #74b9ff;
+        color: white;
+      }
+
+      .btn-equals {
+        background-color: #55efc4;
+        color: black;
+      }
+
+      .btn-clear,
+      .btn-backspace {
+        background-color: #ff7675;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <h1>Simple Calculator</h1>
+      <input type="text" id="display" readonly />
+      <div class="buttons">
+        <button class="btn-digit" onclick="add('9')">9</button>
+        <button class="btn-digit" onclick="add('8')">8</button>
+        <button class="btn-digit" onclick="add('7')">7</button>
+        <button class="btn-clear" onclick="clearDisplay()">C</button>
+        <button class="btn-backspace" onclick="backspace()">⌫</button>
+
+        <button class="btn-digit" onclick="add('6')">6</button>
+        <button class="btn-digit" onclick="add('5')">5</button>
+        <button class="btn-digit" onclick="add('4')">4</button>
+        <button class="btn-operator" onclick="add('(')">(</button>
+        <button class="btn-operator" onclick="add(')')">)</button>
+
+        <button class="btn-digit" onclick="add('3')">3</button>
+        <button class="btn-digit" onclick="add('2')">2</button>
+        <button class="btn-digit" onclick="add('1')">1</button>
+        <button class="btn-digit" onclick="add('00')">00</button>
+        <button class="btn-equals" onclick="equals()">=</button>
+
+        <button class="btn-digit" onclick="add('0')">0</button>
+        <button class="btn-operator" onclick="add('-')">-</button>
+        <button class="btn-operator" onclick="add('+')">+</button>
+        <button class="btn-operator" onclick="add('%')">%</button>
+        <button class="btn-operator" onclick="add('*')">*</button>
+
+        <button class="btn-operator" onclick="add('/')">/</button>
+        <button class="btn-digit" onclick="add('.')">.</button>
+      </div>
+    </div>
+
+    <script>
+      const display = document.getElementById("display");
+
+      function add(value) {
+        display.value += value;
+      }
+
+      function equals() {
+        try {
+          display.value = eval(display.value);
+        } catch (e) {
+          display.value = "Error";
+        }
+      }
+
+      function clearDisplay() {
+        display.value = "";
+      }
+
+      function backspace() {
+        display.value = display.value.slice(0, -1);
+      }
+    </script>
+  </body>
+</html>
